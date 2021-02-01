@@ -1,6 +1,6 @@
-# Getting Started with Create React App
+## Link to TypeScript App on Firebase 
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+[Click Here](https://typescriptquiz.web.app/) to view it in the browser.
 
 ## Available Scripts
 
