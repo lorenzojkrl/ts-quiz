@@ -1,5 +1,5 @@
 import styled, { createGlobalStyle } from "styled-components";
-import bgImage from "./images/john-towner-JgOeRuGD_Y4-unsplash.jpg";
+import bgImage from "./images/john-towner-JgOeRuGD_Y4-unsplash_v1.jpg";
 
 export const GlobalStyle = createGlobalStyle`
     html{

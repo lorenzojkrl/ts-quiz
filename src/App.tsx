@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import {fetchQuestions} from './API';
 
 // Components
@@ -19,14 +19,13 @@ export type UserAnswerObj = {
 
 const TOTAL_QUESTIONS = 10;
 
-const App = () => {
+const App: React.FC = () => {
   const [loading, setLoading] = useState(false);
   const [questions, setQuestions] = useState<QuestionState[]>([]);  // get array of questions from API
   const [number, setNumber] = useState(0);  // Current user question
   const [userAnswer, setUserAnswer] = useState<UserAnswerObj[]>([]);
   const [score, setScore] = useState(0);
   const [gameOver, setGameOver]= useState(true);
-
 
   // console.log(fetchQuestions(TOTAL_QUESTIONS, Difficulty.EASY))
 
@@ -35,17 +34,31 @@ const App = () => {
     setGameOver(false);
 
     // Add error handling try/catch
-    const newQuestions = await fetchQuestions(
-      TOTAL_QUESTIONS, 
-      Difficulty.EASY
-    );
+    // const newQuestions = await fetchQuestions(
+    //   TOTAL_QUESTIONS, 
+    //   Difficulty.EASY
+    // );
 
-    setQuestions(newQuestions);
+    // setQuestions(newQuestions);
     setScore(0);
     setUserAnswer([]);
     setNumber(0);
     setLoading(false);
   }
+
+  useEffect(() => {
+
+    const fetchData = async () => {
+      const newQuestions = await fetchQuestions(
+        TOTAL_QUESTIONS, 
+        Difficulty.EASY
+      );
+
+      setQuestions(newQuestions);
+    }
+    
+    fetchData()
+  }, [])
 
   const checkAnswer = (e: React.MouseEvent<HTMLButtonElement>) => {
     if(!gameOver){
@@ -88,13 +101,13 @@ const App = () => {
       }
       {
         !gameOver 
-        ? <p className='score'>Score {score}</p>
+        ? <div className='score'>Score {score}</div>
         : null
       }
       { loading && <p>Loading Questions...</p> }
       {
-        !loading && !gameOver
-        ? <QuestionCard 
+        !loading && !gameOver && (
+          <QuestionCard 
             questionN = {number + 1}
             totalQuestion = {TOTAL_QUESTIONS}  
             question = {questions[number].question}
@@ -102,7 +115,7 @@ const App = () => {
             userAnswer = {userAnswer ? userAnswer[number] : undefined}
             callback = {checkAnswer}
           />
-        : null
+        )
       }
       {
         !gameOver && 

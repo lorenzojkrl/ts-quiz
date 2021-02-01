@@ -4,12 +4,13 @@ import {UserAnswerObj} from '../App';
 
 // Styles
 import {Wrapper, ButtonWrapper} from './QuestionCard.style';
+
 type Props = {
     question: string;
     answers: string[];
-    callback: any;
+    // callback: any;
     // better because we know what is the type of this callback
-    // callback: (e: React.MouseEvent<HTMLButtonElement>) => void;
+    callback: (e: React.MouseEvent<HTMLButtonElement>) => void;
     // Originally type any, but then I know
     // userAnswer: any;
     userAnswer: UserAnswerObj | undefined;
@@ -30,7 +31,7 @@ const QuestionCard: React.FC<Props> = ({
     return (
         <Wrapper>
             <p className="number">
-                Question: {questionN} / {totalQuestion}
+              Question: {questionN} / {totalQuestion}
             </p>
             <p dangerouslySetInnerHTML={{__html: question}} />
             <div>

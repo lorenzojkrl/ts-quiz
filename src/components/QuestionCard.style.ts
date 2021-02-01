@@ -2,15 +2,16 @@ import styled from "styled-components";
 
 export const Wrapper = styled.div`
   max-width: 1100px;
-  background: #ebfeff;
+  background: #6b181861;
   border-radius: 10px;
-  border: 2px solid #0085a3;
+  // border: 2px solid #0085a3;
   padding: 20px;
-  box-shadow: 0 5 10 rgba( 0, 0, 0, 0.25);
-  text-align: center:
+  box-shadow: 0 5 10 rgba(0, 0, 0, 0.25);
+  text-align: center;
+  color: white;
 
   p {
-      font-size: 1rem;
+    font-size: 1rem;
   }
 `;
 
@@ -35,12 +36,12 @@ export const ButtonWrapper = styled.div<ButtonWrapperProps>`
     margin: 5px 0;
     background: ${({ correct, userClick }) =>
       correct
-        ? "linear-gradient(90deg, #56ffa4, #59bc86)"
+        ? "linear-gradient(90deg,#6feca938,#41de8863)"
         : !correct && userClick
-        ? "linear-gradient(90deg, #ff5656, #c16868)"
-        : "linear-gradient(90deg, #56ccff, #6eafb4)"};
-    border: 3px solid #fff;
-    box-shadow: 1px 2px 0px rgba(0, 0, 0, rgba 0.1);
+        ? "linear-gradient(90deg,#ff565685,#c1686880)"
+        : "linear-gradient(180deg,#919cb285,#500a0ac7)"};
+    // border: 3px solid #fff;
+    // box-shadow: 1px 2px 0px rgba(0, 0, 0, rgba 0.1);
     border-radius: 10px;
     color: #fff;
     text-shadow: 0px 1px 0px rgba(0, 0, 0, 0.25);
